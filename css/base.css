@@ -1,0 +1,239 @@
+@charset "UTF-8";
+
+body {
+    background-color: var(--page-bgcolor);
+}
+
+* {
+    color: var(--page-content-color);
+    transition: all ease 0.333s;
+    scroll-behavior: smooth;
+}
+
+.light,
+.light * {
+    --scrollbar-bgcolor: #ddaaffcc;
+    --page-bgcolor: #eeeeee;
+    --page-content-color: #333333;
+    --drawer-bgcolor: #cc99ff;
+    --db-bgcolor: #ddbbff;
+    --db-hover-bgcolor: #ddaaff;
+    --db-active-bgcolor: #bb88ee;
+    --db-text-color: #ffffff;
+    --div-bgcolor: #ffffff99;
+    --button-selected-bgcolor: #cc99ff99;
+    --filter-button-bgcolor: #33006666;
+    --art-bgcolor: #ffffffcc;
+    --art-h1-bdcolor: #666666;
+    --fh-bgcolor: #cc99ff;
+    --fh-color: #ffffff;
+    --select-bgcolor: #ffffff;
+    --select-bdcolor: #cccccc;
+    --opt-checked-bgcolor: #ddbbff;
+}
+
+.dark,
+.dark * {
+    --scrollbar-bgcolor: #110022cc;
+    --page-bgcolor: #111111;
+    --page-content-color: #cccccc;
+    --drawer-bgcolor: #330066;
+    --db-bgcolor: #7744aa;
+    --db-hover-bgcolor: #663399;
+    --db-active-bgcolor: #552288;
+    --db-text-color: #ccbbdd;
+    --div-bgcolor: #ffffff22;
+    --button-selected-bgcolor: #66339999;
+    --filter-button-bgcolor: #ffffff66;
+    --art-bgcolor: #000000cc;
+    --art-h1-bdcolor: #cccccc;
+    --fh-bgcolor: #663399;
+    --fh-color: #cccccc;
+    --select-bgcolor: #330066;
+    --select-bdcolor: #330066;
+    --opt-checked-bgcolor: #663399;
+}
+
+*::-webkit-scrollbar {
+    width: 4pt;
+}
+
+*::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-bgcolor);
+    border-radius: 2pt;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #9966cc;
+    border-radius: 2pt;
+}
+
+#div_bg {
+    background-image: url('../img/base/Riomon.svg');
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: 80% auto;
+    border-radius: 0pt;
+    opacity: 20%;
+    position: fixed;
+    display: block;
+    top: 0pt;
+    left: 0pt;
+    margin: 0pt;
+    padding: 0pt;
+    box-shadow: none;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+}
+
+:focus-visible {
+    outline: none;
+}
+
+#header {
+    background-color: var(--fh-bgcolor);
+    box-shadow: 0pt 2pt 5pt #66339966;
+    border: none;
+    border-radius: 0;
+    color: var(--fh-color);
+    display: block;
+    position: fixed;
+    float: inline-start;
+    margin: 0pt;
+    width: 100%;
+    top: 0;
+    left: 0;
+    padding: 1em 0em;
+    z-index: 100;
+}
+
+#footer {
+    background-color: var(--fh-bgcolor);
+    box-shadow: 0pt -2pt 5pt #66339966;
+    border: none;
+    border-radius: 0;
+    color: var(--fh-color);
+    display: block;
+    position: fixed;
+    float: inline-end;
+    text-align: center;
+    margin: 0pt;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 0.3em 0em;
+    z-index: 100;
+}
+
+#footer *,
+#header * {
+    color: var(--fh-color);
+}
+
+#head_text {
+    text-align: start;
+    text-indent: 0em;
+    font-size: 1.2em;
+    font-weight: 700;
+    width: 100%;
+    margin: 0pt;
+    margin-inline-start: 2em;
+}
+
+#foot_text {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    align-self: center;
+    text-align: center;
+    text-indent: 0em;
+    font-size: 0.8em;
+    margin: 0pt;
+}
+
+div {
+    border-radius: 5pt;
+    box-shadow: 0pt 1pt 4pt #66666633;
+    background-color: var(--div-bgcolor);
+    display: block;
+    padding: 12pt;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+div.pad {
+    height: 2em;
+    margin-bottom: 2em;
+    background-color: transparent;
+}
+
+.no_padding {
+    padding: 0pt;
+}
+
+.no_shadow {
+    box-shadow: none;
+}
+
+select {
+    background-color: var(--select-bgcolor);
+    border: 1pt solid var(--select-bdcolor);
+    border-radius: 5pt;
+    font-size: 1em;
+    padding: 4pt 4pt;
+    transition: all ease-in 0.25s;
+    width: 100%;
+}
+
+option:checked {
+    background-color: var(--opt-checked-bgcolor);
+}
+
+select:hover,
+input#password:hover {
+    border: 1pt solid #9966ff;
+    box-shadow: 0pt 0pt 3pt #9966ff66;
+}
+
+select:focus-visible,
+input#password:focus-visible {
+    box-shadow: 0pt 0pt 5pt #9966ff66, inset 0pt 0pt 2pt #66666633;
+    border: 1pt solid #9966ff;
+}
+
+table {
+    width: 90%;
+    margin: auto;
+}
+
+textarea {
+    resize: none;
+    border: 1pt solid #cccccc;
+    border-radius: 5pt;
+    font-family: inherit;
+    font-size: 1em;
+    margin: 12pt;
+    padding: 5pt 10pt;
+    transition: all ease-in 0.25s;
+}
+
+textarea:hover {
+    border: 1pt solid #9966ff;
+    box-shadow: 0pt 0pt 6pt #9966ff66;
+}
+
+textarea:focus-visible {
+    box-shadow: 0pt 0pt 10pt #9966ff66, inset 0pt 0pt 3pt #66666633;
+    border: 1pt solid #9966ff;
+}
+
+textarea.areas {
+    margin: 0 auto;
+    align-self: center;
+    height: 10em;
+    width: 90%;
+}
