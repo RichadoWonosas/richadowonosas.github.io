@@ -15,7 +15,7 @@ const localizeHelper = (() => {
     let translationImported = [];
     let stringsLoaded = [];
 
-    getJsonData("../resources/langlist.json").then(
+    getJsonData("https://richadowonosas.github.io/resources/langlist.json").then(
         (data) => {
             languages = data.languages;
             for (let callback in languageListLoaded)
@@ -25,7 +25,7 @@ const localizeHelper = (() => {
         (err) => alert(err)
     );
 
-    getJsonData("../resources/global-localized-strings.json").then(
+    getJsonData("https://richadowonosas.github.io/resources/global-localized-strings.json").then(
         (data) => {
             translate = data;
             for (let callback in stringsLoaded)
