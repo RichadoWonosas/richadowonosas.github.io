@@ -5,58 +5,64 @@ export { drawer, config };
 import { localizeHelper } from "./localize.js";
 
 const config = (() => {
-    let result = {
-        global: {},
-        localeChanged: [],
-        themeChanged: [],
-        fontSizeChanged: []
-    };
+    let result = {};
+
+    let global = {};
+    let localeChanged = [];
+    let themeChanged = [];
+    let fontSizeChanged = [];
 
     // function
-    result.saveGlobalConfig = () => localStorage.setItem("globalConfig", JSON.stringify(result.global));
+    result.saveGlobalConfig = () => localStorage.setItem("globalConfig", JSON.stringify(global));
     // callback registrar
     result.registerLocaleChangedCallback = (onLocaleChanged = (locale) => { }) => {
-        result.localeChanged.push(onLocaleChanged);
+        localeChanged.push(onLocaleChanged);
     };
     result.registerThemeChangedCallback = (onThemeChanged = (light) => { }) => {
-        result.themeChanged.push(onThemeChanged);
+        themeChanged.push(onThemeChanged);
     };
     result.registerFontSizeChangedCallback = (onFontSizeChanged = (size) => { }) => {
-        result.fontSizeChanged.push(onFontSizeChanged);
+        fontSizeChanged.push(onFontSizeChanged);
     };
     // trigger
-    result.changeTheme = (light = !result.global.light) => {
-        result.global.light = light;
+    result.changeTheme = (light = !global.light) => {
+        global.light = light;
         result.saveGlobalConfig();
         document.body.classList.remove(light ? "dark" : "light");
         document.body.classList.add(!light ? "dark" : "light");
-        for (let callback in result.themeChanged)
-            result.themeChanged[callback](light);
+        for (let callback in themeChanged)
+            themeChanged[callback](light);
     };
     result.changeLocale = (locale = "en-US") => {
-        result.global.locale = locale;
+        global.locale = locale;
         result.saveGlobalConfig();
         localizeHelper.changeLocale(locale);
-        for (let callback in result.localeChanged)
-            result.localeChanged[callback](locale);
+        for (let callback in localeChanged)
+            localeChanged[callback](locale);
     };
     result.changeFontSize = (size = "medium") => {
-        result.global.size = size;
+        global.size = size;
         result.saveGlobalConfig();
-        for (let callback in result.fontSizeChanged)
-            result.fontSizeChanged[callback](size);
+        for (let callback in fontSizeChanged)
+            fontSizeChanged[callback](size);
     };
     result.loadGlobalConfig = () => {
         let storedSettings = localStorage.getItem("globalConfig");
-        result.global = (!!storedSettings) ? JSON.parse(storedSettings) : {
+        global = (!!storedSettings) ? JSON.parse(storedSettings) : {
             locale: "en-US",
             light: false,
             size: "medium"
         };
-        result.changeTheme(result.global.light);
-        result.changeFontSize(result.global.size);
-        localizeHelper.registerTranslationImportedCallback(() => result.changeLocale(result.global.locale));
+        result.changeTheme(global.light);
+        result.changeFontSize(global.size);
+        localizeHelper.registerTranslationImportedCallback(() => result.changeLocale(global.locale));
     };
+
+    // debug uses
+    // result.global = global;
+    // result.localeChanged = localeChanged;
+    // result.themeChanged = themeChanged;
+    // result.themeChanged = fontSizeChanged;
 
     return result;
 })();
@@ -65,25 +71,25 @@ const drawer = (() => {
     let result = {};
 
     // the list to record a content is expanded or not
-    result.expand = { "drawer": false };
+    let expand = { "drawer": false };
 
     // drawer
-    result.drawer = document.createElement("div");
-    result.drawer.id = "drawer";
+    let drawer = document.createElement("div");
+    drawer.id = "drawer";
 
     // content container
-    result.container = document.createElement("div");
-    result.container.id = "root_container";
-    result.drawer.appendChild(result.container);
+    let container = document.createElement("div");
+    container.id = "root_container";
+    drawer.appendChild(container);
 
     // collapse container list
-    result.list = [];
+    let list = [];
 
     // button
-    result.button = document.createElement("div");
-    result.button.id = "drawer_button";
-    result.button.classList.add("no_padding");
-    result.button.innerHTML = `
+    let button = document.createElement("div");
+    button.id = "drawer_button";
+    button.classList.add("no_padding");
+    button.innerHTML = `
     <svg class="menu_icon" viewbox="0 0 96 96" fill="#cccccc">
         <rect class="top" width="52" height="4" x="22" y="30" rx="2"></rect>
         <rect class="mid" width="52" height="4" x="22" y="46" rx="2"></rect>
@@ -98,38 +104,38 @@ const drawer = (() => {
         s.classList.add("db_text");
         s.innerText = "菜单";
         localizeHelper.registerLocaleChangeCallback("text_menu", (str) => s.innerText = str);
-        result.button.appendChild(s);
+        button.appendChild(s);
     }
-    result.drawer.appendChild(result.button);
+    drawer.appendChild(button);
 
     // mask
-    result.mask = document.createElement("div");
-    result.mask.id = "drawer_mask";
+    let mask = document.createElement("div");
+    mask.id = "drawer_mask";
 
     // functions
     result.updateDrawerCond = () => {
-        result.list.forEach((element) => element.style = "--height:" + element.offsetHeight + "px");
+        list.forEach((element) => element.style = "--height:" + element.offsetHeight + "px");
     };
 
     result.appendToDocument = () => {
-        result.drawer.classList.remove("expand");
-        result.button.classList.remove("expand");
-        result.mask.classList.remove("expand");
-        result.drawer.classList.add("collapse");
-        result.button.classList.add("collapse");
-        result.mask.classList.add("collapse");
-        document.body.appendChild(result.drawer);
+        drawer.classList.remove("expand");
+        button.classList.remove("expand");
+        mask.classList.remove("expand");
+        drawer.classList.add("collapse");
+        button.classList.add("collapse");
+        mask.classList.add("collapse");
+        document.body.appendChild(drawer);
         result.updateDrawerCond();
     };
 
     result.createDrawerContentFrame = (name, defaultTitle) => {
         // frame html struct
-        let frame = { id: name };
+        let frame = {};
+        let id = name;
         let root = document.createElement("div");
         root.id = "root_" + name;
         root.classList.add("drawer_root");
         root.classList.add("collapse");
-        frame.root = root;
 
         let title = document.createElement("div");
         title.id = "opt_" + name;
@@ -143,8 +149,7 @@ const drawer = (() => {
         let icon_expand = document.createElement("span");
         icon_expand.classList.add("icon_expand");
         title.appendChild(icon_expand);
-        frame.root.appendChild(title);
-        frame.title = title;
+        root.appendChild(title);
 
         let cont = document.createElement("div");
         cont.classList.add("drawer_container");
@@ -154,26 +159,31 @@ const drawer = (() => {
         container.classList.add("drawer_container");
         container.classList.add("collapse");
         cont.appendChild(container);
-        frame.root.appendChild(cont);
-        frame.container = container;
+        root.appendChild(cont);
 
         // functions
         frame.createContent = (sectionName, sectionTitle) => {
-            let result = document.createElement("div");
-            result.id = frame.id + "_" + sectionName;
-            result.classList.add("drawer_content");
+            let content = document.createElement("div");
+            content.id = id + "_" + sectionName;
+            content.classList.add("drawer_content");
 
             let s = document.createElement("span");
-            s.id = "text_" + result.id;
+            s.id = "text_" + content.id;
             s.classList.add("opt_text");
             s.innerText = sectionTitle;
             localizeHelper.registerLocaleChangeCallback(s.id, (str) => s.innerText = str);
-            result.appendChild(s);
+            content.appendChild(s);
 
-            return result;
+            return content;
         };
 
-        frame.addContent = (content) => frame.container.appendChild(content);
+        frame.addContent = (content) => container.appendChild(content);
+
+        // data binding
+        frame.id = id;
+        frame.root = root;
+        frame.title = title;
+        frame.container = container;
 
         return frame;
     };
@@ -183,43 +193,43 @@ const drawer = (() => {
             console.warn("Invalid drawer frame!");
             return;
         }
-        result.container.appendChild(frame.root);
-        result.list.push(frame.container);
-        result.expand[frame.id] = false;
+        container.appendChild(frame.root);
+        list.push(frame.container);
+        expand[frame.id] = false;
 
         frame.title.onclick = () => {
-            result.expand[frame.id] = !result.expand[frame.id];
-            frame.root.classList.remove(result.expand[frame.id] ? "collapse" : "expand");
-            frame.root.classList.add(!result.expand[frame.id] ? "collapse" : "expand");
-            frame.container.classList.remove(result.expand[frame.id] ? "collapse" : "expand");
-            frame.container.classList.add(!result.expand[frame.id] ? "collapse" : "expand");
+            expand[frame.id] = !expand[frame.id];
+            frame.root.classList.remove(expand[frame.id] ? "collapse" : "expand");
+            frame.root.classList.add(!expand[frame.id] ? "collapse" : "expand");
+            frame.container.classList.remove(expand[frame.id] ? "collapse" : "expand");
+            frame.container.classList.add(!expand[frame.id] ? "collapse" : "expand");
         };
     };
 
-    result.changeDrawerStatus = (status = !result.expand["drawer"]) => {
-        result.expand["drawer"] = status;
-        if (result.expand["drawer"]) {
-            document.body.appendChild(result.mask);
-            result.mask.onclick = () => result.changeDrawerStatus(false);
-            result.drawer.classList.remove("collapse");
-            result.drawer.classList.add("expand");
-            result.button.classList.remove("collapse");
-            result.button.classList.add("expand");
+    result.changeDrawerStatus = (status = !expand["drawer"]) => {
+        expand["drawer"] = status;
+        if (expand["drawer"]) {
+            document.body.appendChild(mask);
+            mask.onclick = () => result.changeDrawerStatus(false);
+            drawer.classList.remove("collapse");
+            drawer.classList.add("expand");
+            button.classList.remove("collapse");
+            button.classList.add("expand");
             setTimeout(() => {
-                result.mask.classList.remove("collapse");
-                result.mask.classList.add("expand");
+                mask.classList.remove("collapse");
+                mask.classList.add("expand");
             }, 0);
         } else {
-            result.mask.onclick = () => { };
-            result.drawer.classList.remove("expand");
-            result.drawer.classList.add("collapse");
-            result.button.classList.remove("expand");
-            result.button.classList.add("collapse");
-            result.mask.classList.remove("expand");
-            result.mask.classList.add("collapse");
+            mask.onclick = () => { };
+            drawer.classList.remove("expand");
+            drawer.classList.add("collapse");
+            button.classList.remove("expand");
+            button.classList.add("collapse");
+            mask.classList.remove("expand");
+            mask.classList.add("collapse");
             setTimeout(() => {
                 try {
-                    document.body.removeChild(result.mask)
+                    document.body.removeChild(mask)
                 } catch (e) {
                     console.log(e);
                 };
@@ -227,7 +237,7 @@ const drawer = (() => {
         }
     };
 
-    // TODO: bind default setting area
+    // bind default setting area
     {
         let settingsFrame = result.createDrawerContentFrame("settings", "设置");
         {
@@ -319,9 +329,17 @@ const drawer = (() => {
     };
 
     // function bindings
-    result.button.onclick = () => result.changeDrawerStatus();
-    result.mask.onclick = () => { };
+    button.onclick = () => result.changeDrawerStatus();
+    mask.onclick = () => { };
     document.onresize = () => result.updateDrawerCond();
+
+    // debug uses
+    // result.expand = expand;
+    // result.drawer = drawer;
+    // result.container = container;
+    // result.list = list;
+    // result.button = button;
+    // result.mask = mask;
 
     return result;
 })();

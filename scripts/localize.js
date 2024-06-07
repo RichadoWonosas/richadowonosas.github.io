@@ -8,18 +8,18 @@ const localizeHelper = (() => {
     let result = {};
 
     // helper content
-    result.translate = {};
-    result.languages = {};
-    result.localeChange = {};
-    result.languageListLoaded = [];
-    result.translationImported = [];
-    result.stringsLoaded = [];
+    let translate = {};
+    let languages = {};
+    let localeChange = {};
+    let languageListLoaded = [];
+    let translationImported = [];
+    let stringsLoaded = [];
 
     getJsonData("../resources/langlist.json").then(
         (data) => {
-            result.languages = data.languages;
-            for (let callback in result.languageListLoaded)
-                result.languageListLoaded[callback](result.languages);
+            languages = data.languages;
+            for (let callback in languageListLoaded)
+                languageListLoaded[callback](languages);
         }
     ).catch(
         (err) => alert(err)
@@ -27,9 +27,9 @@ const localizeHelper = (() => {
 
     getJsonData("../resources/global-localized-strings.json").then(
         (data) => {
-            result.translate = data;
-            for (let callback in result.stringsLoaded)
-                result.stringsLoaded[callback]();
+            translate = data;
+            for (let callback in stringsLoaded)
+                stringsLoaded[callback]();
         }
     ).catch(
         (err) => alert(err)
@@ -40,37 +40,45 @@ const localizeHelper = (() => {
         getJsonData(path).then(
             (data) => {
                 for (let i in data)
-                    if (!result.translate[i])
-                        result.translate[i] = data[i];
-                for (let callback in result.translationImported)
-                    result.translationImported[callback]();
+                    if (!translate[i])
+                        translate[i] = data[i];
+                for (let callback in translationImported)
+                    translationImported[callback]();
             }
         ).catch(
             (err) => alert(err)
         );
     result.registerTranslationImportedCallback = (onTranslationImported = () => { }) => {
-        result.translationImported.push(onTranslationImported);
+        translationImported.push(onTranslationImported);
     }
     result.registerLocaleChangeCallback = (id, onLocaleChange = (str) => { }) => {
-        result.localeChange[id] = onLocaleChange;
+        localeChange[id] = onLocaleChange;
     };
     result.registerLanguageListLoadedCallback = (onLanguageListLoaded = (languages) => { }) => {
-        result.languageListLoaded.push(onLanguageListLoaded);
+        languageListLoaded.push(onLanguageListLoaded);
     };
     result.changeLocale = (selected) => {
         const DEF = "en-US";
         let s = DEF;
-        for (let i in result.languages)
-            if (result.languages[i].id == selected) {
+        for (let i in languages)
+            if (languages[i].id == selected) {
                 s = selected;
                 break;
             }
-        for (let id in result.localeChange) {
-            if (!result.translate[id])
+        for (let id in localeChange) {
+            if (!translate[id])
                 continue;
-            result.localeChange[id]((!result.translate[id][s]) ? result.translate[id][DEF] : result.translate[id][s]);
+            localeChange[id]((!translate[id][s]) ? translate[id][DEF] : translate[id][s]);
         }
     };
+
+    // debug uses
+    // result.translate = translate;
+    // result.languages = languages;
+    // result.localeChange = localeChange;
+    // result.languageListLoaded = languageListLoaded;
+    // result.translationImported = translationImported;
+    // result.stringsLoaded = stringsLoaded;
 
     return result;
 })();
