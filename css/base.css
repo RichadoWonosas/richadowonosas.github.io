@@ -54,6 +54,18 @@ body {
     --opt-checked-bgcolor: #663399;
 }
 
+.small {
+    --font-size: 10pt;
+}
+
+.medium {
+    --font-size: 12pt;
+}
+
+.large {
+    --font-size: 14pt;
+}
+
 *::-webkit-scrollbar {
     width: 4pt;
 }
@@ -92,23 +104,6 @@ body {
     outline: none;
 }
 
-#header {
-    background-color: var(--fh-bgcolor);
-    box-shadow: 0pt 2pt 5pt #66339966;
-    border: none;
-    border-radius: 0;
-    color: var(--fh-color);
-    display: block;
-    position: fixed;
-    float: inline-start;
-    margin: 0pt;
-    width: 100%;
-    top: 0;
-    left: 0;
-    padding: 1em 0em;
-    z-index: 100;
-}
-
 #footer {
     background-color: var(--fh-bgcolor);
     box-shadow: 0pt -2pt 5pt #66339966;
@@ -127,19 +122,8 @@ body {
     z-index: 100;
 }
 
-#footer *,
-#header * {
+#footer * {
     color: var(--fh-color);
-}
-
-#head_text {
-    text-align: start;
-    text-indent: 0em;
-    font-size: 1.2em;
-    font-weight: 700;
-    width: 100%;
-    margin: 0pt;
-    margin-inline-start: 2em;
 }
 
 #foot_text {
@@ -212,6 +196,7 @@ table {
 
 textarea {
     resize: none;
+    background-color: var(--art-bgcolor);
     border: 1pt solid #cccccc;
     border-radius: 5pt;
     font-family: inherit;
@@ -236,4 +221,70 @@ textarea.areas {
     align-self: center;
     height: 10em;
     width: 90%;
+}
+
+#root_div {
+    border-radius: 10pt;
+    margin: 16pt auto;
+    text-align: center;
+    min-width: 80%;
+    width: 500pt;
+    max-width: 90%;
+    font-size: var(--font-size, 12pt);
+
+    overflow: hidden;
+}
+
+#root_div p,
+#root_div h1,
+#root_div h2,
+#root_div h3 {
+    padding: 0 0 0 var(--font-size, 12pt);
+}
+
+#root_div ruby rt {
+    font-size: calc(var(--font-size, 12pt) * 0.5);
+}
+
+#root_div img,
+#root_div video {
+    max-width: 80%;
+    max-height: 50vh;
+}
+
+#root_div p {
+    text-align: left;
+    line-height: 1.8em;
+}
+
+#root_div h1 {
+    font-size: calc(var(--font-size, 12pt) * 2);
+    font-family: "Noto Serif CJK SC", "Noto Serif SC", "思源宋体", "Times New Roman", "宋体";
+    font-weight: 900;
+}
+
+#root_div h2 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: calc(var(--font-size) * 1.5);
+}
+
+#root_div h3 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+    font-size: calc(var(--font-size) * 1.2);
+}
+
+#root_div article {
+    display: block;
+    user-select: none;
+    background-color: var(--art-bgcolor);
+    margin: 12pt;
+    padding: 24pt 12pt 12pt 12pt;
+
+    height: 40vh;
+    border-radius: 5pt;
+    border: #33006666 1pt solid;
+
+    overflow: auto;
 }
