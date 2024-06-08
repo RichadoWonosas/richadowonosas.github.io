@@ -266,13 +266,13 @@ textarea.areas {
 #root_div h2 {
     margin-top: 1em;
     margin-bottom: 1em;
-    font-size: calc(var(--font-size) * 1.5);
+    font-size: calc(var(--font-size, 12pt) * 1.5);
 }
 
 #root_div h3 {
     margin-top: 1.5em;
     margin-bottom: 1em;
-    font-size: calc(var(--font-size) * 1.2);
+    font-size: calc(var(--font-size, 12pt) * 1.2);
 }
 
 #root_div article {
@@ -288,4 +288,16 @@ textarea.areas {
     border: #33006666 1pt solid;
 
     overflow: auto;
+}
+
+#root_div article h1 {
+    font-size: calc(var(--font-size, 12pt) * 1.5);
+}
+
+#root_div article h2 {
+    font-size: calc(var(--font-size, 12pt) * 1.2);
+}
+
+#root_div article h3 {
+    font-size: var(--font-size, 12pt);
 }

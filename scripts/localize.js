@@ -36,18 +36,13 @@ const localizeHelper = (() => {
     );
 
     // helper functions
-    result.importTranslation = (path) =>
-        getJsonData(path).then(
-            (data) => {
-                for (let i in data)
-                    if (!translate[i])
-                        translate[i] = data[i];
-                for (let callback in translationImported)
-                    translationImported[callback]();
-            }
-        ).catch(
-            (err) => alert(err)
-        );
+    result.importTranslation = (data) => {
+        for (let i in data)
+            if (!translate[i])
+                translate[i] = data[i];
+        for (let callback in translationImported)
+            translationImported[callback]();
+    };
     result.registerTranslationImportedCallback = (onTranslationImported = () => { }) => {
         translationImported.push(onTranslationImported);
     }
