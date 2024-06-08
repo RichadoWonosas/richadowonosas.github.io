@@ -282,7 +282,8 @@ textarea.areas {
     margin: 12pt;
     padding: 24pt 12pt 12pt 12pt;
 
-    height: 40vh;
+    box-sizing: border-box;
+
     border-radius: 5pt;
     border: #33006666 1pt solid;
 
