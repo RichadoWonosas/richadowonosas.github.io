@@ -178,6 +178,20 @@
     transform-origin: center;
 }
 
+#drawer .button {
+    background-color: var(--ind-button-bgcolor);
+}
+
+#drawer .button:focus-visible,
+#drawer .button:hover {
+    background-color: var(--ind-button-hover-bgcolor);
+}
+
+#drawer .button:active {
+    transform: translateY(2pt);
+    background-color: var(--ind-button-active-bgcolor);
+}
+
 @keyframes top-expand {
     0% {
         y: 30;
@@ -438,7 +452,6 @@
     display: flex;
     float: left;
     align-items: center;
-    width: 50%;
 }
 
 .drawer_root .drawer_content select {

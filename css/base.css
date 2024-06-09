@@ -20,9 +20,10 @@ body {
     --db-hover-bgcolor: #ddaaff;
     --db-active-bgcolor: #bb88ee;
     --db-text-color: #ffffff;
+    --ind-button-bgcolor: #ffffff99;
+    --ind-button-hover-bgcolor: #ffffff33;
+    --ind-button-active-bgcolor: #9966cc33;
     --div-bgcolor: #ffffff99;
-    --button-selected-bgcolor: #cc99ff99;
-    --filter-button-bgcolor: #33006666;
     --art-bgcolor: #ffffffcc;
     --art-h1-bdcolor: #666666;
     --fh-bgcolor: #cc99ff;
@@ -42,9 +43,10 @@ body {
     --db-hover-bgcolor: #663399;
     --db-active-bgcolor: #552288;
     --db-text-color: #ccbbdd;
+    --ind-button-bgcolor: #ffffff22;
+    --ind-button-hover-bgcolor: #ffffff11;
+    --ind-button-active-bgcolor: #22004433;
     --div-bgcolor: #ffffff22;
-    --button-selected-bgcolor: #66339999;
-    --filter-button-bgcolor: #ffffff66;
     --art-bgcolor: #000000cc;
     --art-h1-bdcolor: #cccccc;
     --fh-bgcolor: #663399;
