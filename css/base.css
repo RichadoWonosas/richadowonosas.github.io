@@ -292,7 +292,8 @@ textarea.areas {
     overflow: auto;
 }
 
-#root_div article * {
+#root_div article *,
+#root_div textarea * {
     transition: none;
 }
 
