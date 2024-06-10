@@ -244,6 +244,10 @@ textarea.areas {
     padding: 0 0 0 var(--font-size, 12pt);
 }
 
+#root_div * {
+    transition: none;
+}
+
 #root_div ruby rt {
     font-size: calc(var(--font-size, 12pt) * 0.5);
 }
