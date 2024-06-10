@@ -244,10 +244,6 @@ textarea.areas {
     padding: 0 0 0 var(--font-size, 12pt);
 }
 
-#root_div * {
-    transition: none;
-}
-
 #root_div ruby rt {
     font-size: calc(var(--font-size, 12pt) * 0.5);
 }
@@ -294,6 +290,10 @@ textarea.areas {
     border: #33006666 1pt solid;
 
     overflow: auto;
+}
+
+#root_div article * {
+    transition: none;
 }
 
 #root_div article h1 {
