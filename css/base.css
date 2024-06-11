@@ -6,8 +6,7 @@ body {
 
 * {
     color: var(--page-content-color);
-    transition: all ease 0.333s;
-    transition: font-size 0s;
+    transition: all ease 0.333s, font-size 0s;
     scroll-behavior: smooth;
 }
 
@@ -172,7 +171,7 @@ select {
     border-radius: 5pt;
     font-size: 1em;
     padding: 4pt 4pt;
-    transition: all ease-in 0.25s;
+    transition: all ease-in 0.25s, font-size 0s;
     width: 100%;
 }
 
@@ -206,7 +205,7 @@ textarea {
     font-size: 1em;
     margin: 12pt;
     padding: 5pt 10pt;
-    transition: all ease-in 0.25s;
+    transition: all ease-in 0.25s, font-size 0s;
 }
 
 textarea:hover {
