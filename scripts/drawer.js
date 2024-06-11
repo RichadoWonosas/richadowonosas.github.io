@@ -11,6 +11,7 @@ const config = (() => {
     let localeChanged = [];
     let themeChanged = [];
     let fontSizeChanged = [];
+    let yohaChanged = [];
 
     // function
     result.saveGlobalConfig = () => localStorage.setItem("globalConfig", JSON.stringify(global));
@@ -24,6 +25,9 @@ const config = (() => {
     result.registerFontSizeChangedCallback = (onFontSizeChanged = (size) => { }) => {
         fontSizeChanged.push(onFontSizeChanged);
     };
+    result.registerYohaneChangedCallback = (onYohaneChanged = (yoha) => { }) => {
+        yohaChanged.push(onYohaneChanged);
+    }
     // trigger
     result.changeTheme = (light = !global.light) => {
         global.light = light;
@@ -46,15 +50,38 @@ const config = (() => {
         for (let callback in fontSizeChanged)
             fontSizeChanged[callback](size);
     };
+    result.changeYoha = (yoha = false) => {
+        global.yoha = yoha;
+        result.saveGlobalConfig();
+        if (yoha)
+            document.body.classList.add("yoha");
+        else
+            document.body.classList.remove("yoha");
+        for (let callback in yohaChanged)
+            yohaChanged[callback](yoha);
+    };
     result.loadGlobalConfig = () => {
         let storedSettings = localStorage.getItem("globalConfig");
         global = (!!storedSettings) ? JSON.parse(storedSettings) : {
             locale: "en-US",
             light: false,
-            size: "medium"
+            size: "medium",
+            yoha: false
         };
+        {
+            if (global.locale == undefined)
+                global.locale = "en-US";
+            if (global.light == undefined)
+                global.light = true;
+            if (global.size == undefined)
+                global.size = "medium";
+            if (global.yoha == undefined)
+                global.yoha = false;
+
+        }
         result.changeTheme(global.light);
         result.changeFontSize(global.size);
+        result.changeYoha(global.yoha);
         localizeHelper.registerTranslationImportedCallback(() => result.changeLocale(global.locale));
     };
 
@@ -323,6 +350,24 @@ const drawer = (() => {
             div_theme.appendChild(l);
 
             settingsFrame.addContent(div_theme);
+        }
+        {
+            let div_yoha = settingsFrame.createContent("yoha", "夜羽");
+
+            let l = document.createElement("label");
+            l.classList.add("toggle");
+            l.innerHTML = `
+            <input type="checkbox">
+                <span class="slider">
+                    <span class="inner_slider"></span>
+                </span>
+            </input>`;
+            let input = l.children[0];
+            config.registerYohaneChangedCallback((yoha) => input.checked = yoha);
+            input.onchange = () => config.changeYoha(input.checked);
+            div_yoha.appendChild(l);
+
+            settingsFrame.addContent(div_yoha);
         }
 
         result.addDrawerContentByFrame(settingsFrame);

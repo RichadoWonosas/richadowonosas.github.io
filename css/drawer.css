@@ -28,6 +28,15 @@
     --icon-export: url("https://richadowonosas.github.io/img/icons/dark/export.svg");
 }
 
+@font-face {
+    font-family: 'RW Yohane Sans';
+    src: url('https://richadowonosas.github.io/fonts/RWYohaneSans.otf');
+}
+
+.yoha {
+    font-family: 'RW Yohane Sans', 'Noto Sans CJK SC Light', 'Noto Sans SC Light', 'MiSans Light';
+}
+
 #drawer {
     position: fixed;
     display: block;
@@ -556,7 +565,7 @@ label.toggle .slider {
     width: 100%;
     height: 100%;
     border-radius: var(--height);
-    background-color: #e4e4e4;
+    background-color: var(--slider-bgcolor);
     box-shadow: inset 0pt 1pt 2pt #00000066;
 
 }
@@ -570,17 +579,17 @@ label.toggle .slider .inner_slider {
     width: calc(var(--height) - 2 * var(--subs));
     height: calc(var(--height) - 2 * var(--subs));
     border-radius: calc(var(--height) / 2 - var(--subs));
-    background-color: #ffffff;
+    background-color: var(--slider-inner-bgcolor);
     box-shadow: 0pt 1pt 3pt #00000066;
 
 }
 
 label.toggle input:checked+.slider {
-    background-color: #9966cc;
+    background-color: var(--slider-active-bgcolor);
 }
 
 label.toggle:active .slider .inner_slider {
-    background-color: #cccccc;
+    background-color: var(--slider-inner-slcolor);
     top: 1pt;
 }
 
@@ -610,6 +619,6 @@ label.toggle #daynight:checked+#dn_span {
 }
 
 label.toggle #daynight:checked+#dn_span .inner_slider {
-    background-color: #e4e4e4;
+    background-color: #dddddd;
     background-position: 0% 96%;
 }

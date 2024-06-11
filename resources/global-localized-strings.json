@@ -61,5 +61,12 @@
         "zh-TW": "主題切換",
         "lzh-CN": "易景",
         "ja-JP": "テーマ切替"
+    },
+    "text_settings_yoha": {
+        "en-US": "Yohane Font",
+        "zh-CN": "夜羽字体",
+        "zh-TW": "夜羽字體",
+        "lzh-CN": "夜羽字形",
+        "ja-JP": "ヨハネフォント"
     }
 }

@@ -31,6 +31,10 @@ body {
     --select-bgcolor: #ffffff;
     --select-bdcolor: #cccccc;
     --opt-checked-bgcolor: #ddbbff;
+    --slider-bgcolor: #eeeeee;
+    --slider-active-bgcolor: #cc99ff;
+    --slider-inner-bgcolor: #ffffff;
+    --slider-inner-slcolor: #dddddd;
 }
 
 .dark,
@@ -54,6 +58,10 @@ body {
     --select-bgcolor: #330066;
     --select-bdcolor: #330066;
     --opt-checked-bgcolor: #663399;
+    --slider-bgcolor: #999999;
+    --slider-active-bgcolor: #330066;
+    --slider-inner-bgcolor: #dddddd;
+    --slider-inner-slcolor: #aaaaaa;
 }
 
 .small {
