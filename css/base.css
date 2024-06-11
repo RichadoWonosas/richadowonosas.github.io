@@ -7,6 +7,7 @@ body {
 * {
     color: var(--page-content-color);
     transition: all ease 0.333s;
+    transition: font-size 0s;
     scroll-behavior: smooth;
 }
 
@@ -290,11 +291,6 @@ textarea.areas {
     border: #33006666 1pt solid;
 
     overflow: auto;
-}
-
-#root_div article *,
-#root_div textarea * {
-    transition: none;
 }
 
 #root_div article h1 {
