@@ -40,7 +40,7 @@ body {
 .dark,
 .dark * {
     --scrollbar-bgcolor: #110022cc;
-    --page-bgcolor: #111111;
+    --page-bgcolor: #222222;
     --page-content-color: #cccccc;
     --drawer-bgcolor: #330066;
     --db-bgcolor: #7744aa;
@@ -50,7 +50,7 @@ body {
     --ind-button-bgcolor: #ffffff22;
     --ind-button-hover-bgcolor: #ffffff11;
     --ind-button-active-bgcolor: #22004433;
-    --div-bgcolor: #ffffff22;
+    --div-bgcolor: #11111199;
     --art-bgcolor: #000000cc;
     --art-h1-bdcolor: #cccccc;
     --fh-bgcolor: #663399;
@@ -173,6 +173,17 @@ div.pad {
     box-shadow: none;
 }
 
+div.divider {
+    height: 1pt;
+    background-color: #cccccc99;
+    padding: 0pt;
+    margin-top: 1.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: -0.5em;
+    box-shadow: none;
+}
+
 select {
     background-color: var(--select-bgcolor);
     border: 1pt solid var(--select-bdcolor);
@@ -277,12 +288,14 @@ textarea.areas {
     margin-top: 1em;
     margin-bottom: 1em;
     font-size: calc(var(--font-size, 12pt) * 1.5);
+    text-align: start;
 }
 
 #root_div h3 {
     margin-top: 1.5em;
     margin-bottom: 1em;
     font-size: calc(var(--font-size, 12pt) * 1.2);
+    text-align: start;
 }
 
 #root_div article {

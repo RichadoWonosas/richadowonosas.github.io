@@ -50,6 +50,10 @@
     z-index: 104;
 }
 
+#drawer #root_container div {
+    background-color: var(--ind-button-bgcolor);
+}
+
 #drawer.collapse {
     left: calc(-12pt - min(240pt, 80%));
 }
@@ -396,7 +400,7 @@
     opacity: 33%;
 }
 
-.drawer_root {
+#drawer #root_container .drawer_root {
     margin: 0pt 6pt 12pt 6pt;
     /* height: calc(100% - 72pt); */
     height: fit-content;
@@ -404,15 +408,15 @@
     overflow-y: hidden;
 }
 
-.drawer_root.expand {
+#drawer #root_container .drawer_root.expand {
     padding: 0pt 0pt 12pt 0pt;
 }
 
-.drawer_root.collapse {
+#drawer #root_container .drawer_root.collapse {
     padding: 0pt;
 }
 
-.drawer_root .drawer_content {
+#drawer #root_container .drawer_root .drawer_content {
     --offset-x: 0pt;
     --offset-y: 0pt;
     display: flex;
@@ -456,30 +460,30 @@
     --offset-x: -5pt;
 }
 
-.drawer_root .drawer_content .opt_text {
+#drawer #root_container .drawer_root .drawer_content .opt_text {
     font-weight: 700;
     display: flex;
     float: left;
     align-items: center;
 }
 
-.drawer_root .drawer_content select {
+#drawer #root_container .drawer_root .drawer_content select {
     width: min(100pt, 50%);
     display: flex;
     float: right;
 }
 
-.drawer_root label.toggle {
+#drawer #root_container .drawer_root label.toggle {
     float: right;
 }
 
-.drawer_root h3 {
+#drawer #root_container .drawer_root h3 {
     margin: 0pt;
     padding: 12pt 0pt;
     text-indent: 1em;
 }
 
-#root_container {
+#drawer #root_container {
     height: calc(100% - 60pt);
     background-color: transparent;
     padding: 0pt;
@@ -488,7 +492,7 @@
     overflow-y: auto;
 }
 
-.drawer_root .drawer_container {
+#drawer #root_container .drawer_root .drawer_container {
     background-color: transparent;
     margin: 0;
     padding: 0;
@@ -496,21 +500,21 @@
     box-shadow: none;
 }
 
-.drawer_root .drawer_container.expand {
+#drawer #root_container .drawer_root .drawer_container.expand {
     margin-top: 0;
 }
 
-.drawer_root .drawer_container.collapse {
+#drawer #root_container .drawer_root .drawer_container.collapse {
     margin-top: calc(-1 * var(--height, 100%));
 }
 
-.drawer_root .drawer_container.flex {
+#drawer #root_container .drawer_root .drawer_container.flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.drawer_root .drawer_container.flex .icon_expand {
+#drawer #root_container .drawer_root .drawer_container.flex .icon_expand {
     padding: 0pt 6pt;
     width: 24pt;
     height: 24pt;
@@ -520,7 +524,7 @@
     background-repeat: no-repeat;
 }
 
-.drawer_root.expand .drawer_container.flex .icon_expand {
+#drawer #root_container .drawer_root.expand .drawer_container.flex .icon_expand {
     transform: rotate(180deg);
 }
 
@@ -528,7 +532,7 @@
     background-image: var(--icon-goto);
 }
 
-.drawer_content .icon_goto {
+#drawer .drawer_content .icon_goto {
     width: 16pt;
     height: 16pt;
     background-position: 50% 50%;
