@@ -83,8 +83,9 @@ const config = (() => {
         result.changeTheme(global.light);
         result.changeFontSize(global.size);
         result.changeYoha(global.yoha);
-        localizeHelper.registerTranslationImportedCallback(() => result.changeLocale(global.locale));
     };
+
+    localizeHelper.registerTranslationImportedCallback(() => result.changeLocale(global.locale));
 
     // debug uses
     // result.global = global;
