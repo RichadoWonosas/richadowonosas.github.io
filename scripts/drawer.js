@@ -41,6 +41,7 @@ const config = (() => {
         global.locale = locale;
         result.saveGlobalConfig();
         localizeHelper.changeLocale(locale);
+
         for (let callback in localeChanged)
             localeChanged[callback](locale);
     };
@@ -287,6 +288,7 @@ const drawer = (() => {
                         s.options[o].selected = true;
                         break;
                     }
+                result.updateDrawerCond();
             });
             div_lang.appendChild(s);
             settingsFrame.addContent(div_lang);
@@ -328,6 +330,7 @@ const drawer = (() => {
                         s.options[o].selected = true;
                         break;
                     }
+                result.updateDrawerCond();
             });
             div_size.appendChild(s);
 
@@ -363,7 +366,10 @@ const drawer = (() => {
                 </span>
             </input>`;
             let input = l.children[0];
-            config.registerYohaneChangedCallback((yoha) => input.checked = yoha);
+            config.registerYohaneChangedCallback((yoha) => {
+                input.checked = yoha;
+                result.updateDrawerCond();
+            });
             input.onchange = () => config.changeYoha(input.checked);
             div_yoha.appendChild(l);
 
