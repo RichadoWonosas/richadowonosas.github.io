@@ -260,7 +260,7 @@ const drawer = (() => {
                 try {
                     document.body.removeChild(mask)
                 } catch (e) {
-                    console.log(e);
+                    console.error(e);
                 };
             }, 333);
         }
@@ -356,12 +356,12 @@ const drawer = (() => {
             settingsFrame.addContent(div_theme);
         }
         {
-            let div_yoha = settingsFrame.createContent("yoha", "夜羽");
+            let div_yoha = settingsFrame.createContent("yoha", "夜羽字体");
 
             let l = document.createElement("label");
             l.classList.add("toggle");
             l.innerHTML = `
-            <input type="checkbox">
+            <input id="input_yoha" type="checkbox">
                 <span class="slider">
                     <span class="inner_slider"></span>
                 </span>

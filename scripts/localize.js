@@ -82,5 +82,3 @@ const localizeHelper = (() => {
 
     return result;
 })();
-
-console.log(localizeHelper);
