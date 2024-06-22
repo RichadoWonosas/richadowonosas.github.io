@@ -97,6 +97,7 @@ const helper = (() => {
                         if (localize.entries[entry] === undefined)
                             localize.entries[entry] = data[entry];
                     result.triggerEvent("entriesLoaded", {entries: localize.entries});
+                    result.triggerEvent("locale", {locale: global.locale});
                 }
             ).catch(
                 (err) => console.error(err)
