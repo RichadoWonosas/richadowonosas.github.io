@@ -1,8 +1,8 @@
-"use-strict";
+"use strict";
 
-export { drawer, config };
+export {drawer, config};
 
-import { localizeHelper } from "./localize.js";
+import {localizeHelper} from "./localize.js";
 
 const config = (() => {
     let result = {};
@@ -16,16 +16,24 @@ const config = (() => {
     // function
     result.saveGlobalConfig = () => localStorage.setItem("globalConfig", JSON.stringify(global));
     // callback registrar
-    result.registerLocaleChangedCallback = (onLocaleChanged = (locale) => { }) => {
+    result.registerLocaleChangedCallback = (onLocaleChanged = (locale) => {
+        console.log(locale)
+    }) => {
         localeChanged.push(onLocaleChanged);
     };
-    result.registerThemeChangedCallback = (onThemeChanged = (light) => { }) => {
+    result.registerThemeChangedCallback = (onThemeChanged = (theme) => {
+        console.log(theme)
+    }) => {
         themeChanged.push(onThemeChanged);
     };
-    result.registerFontSizeChangedCallback = (onFontSizeChanged = (size) => { }) => {
+    result.registerFontSizeChangedCallback = (onFontSizeChanged = (size) => {
+        console.log(size)
+    }) => {
         fontSizeChanged.push(onFontSizeChanged);
     };
-    result.registerYohaneChangedCallback = (onYohaneChanged = (yoha) => { }) => {
+    result.registerYohaneChangedCallback = (onYohaneChanged = (yoha) => {
+        console.log(yoha)
+    }) => {
         yohaChanged.push(onYohaneChanged);
     }
     // trigger
@@ -70,16 +78,17 @@ const config = (() => {
             yoha: false
         };
         {
-            if (global.locale == undefined)
+            if (global.locale === undefined)
                 global.locale = "en-US";
-            if (global.light == undefined)
+            if (global.light === undefined)
                 global.light = true;
-            if (global.size == undefined)
+            if (global.size === undefined)
                 global.size = "medium";
-            if (global.yoha == undefined)
+            if (global.yoha === undefined)
                 global.yoha = false;
 
         }
+        result.changeLocale(global.locale);
         result.changeTheme(global.light);
         result.changeFontSize(global.size);
         result.changeYoha(global.yoha);
@@ -100,7 +109,7 @@ const drawer = (() => {
     let result = {};
 
     // the list to record a content is expanded or not
-    let expand = { "drawer": false };
+    let expand = {"drawer": false};
 
     // drawer
     let drawer = document.createElement("div");
@@ -249,7 +258,8 @@ const drawer = (() => {
                 mask.classList.add("expand");
             }, 0);
         } else {
-            mask.onclick = () => { };
+            mask.onclick = () => {
+            };
             drawer.classList.remove("expand");
             drawer.classList.add("collapse");
             button.classList.remove("expand");
@@ -258,10 +268,10 @@ const drawer = (() => {
             mask.classList.add("collapse");
             setTimeout(() => {
                 try {
-                    document.body.removeChild(mask)
+                    document.body.removeChild(mask);
                 } catch (e) {
                     console.error(e);
-                };
+                }
             }, 333);
         }
     };
@@ -285,7 +295,7 @@ const drawer = (() => {
             s.onchange = () => config.changeLocale(s.selectedOptions[0].value);
             config.registerLocaleChangedCallback((locale) => {
                 for (let o in s.options)
-                    if (s.options[o].value == locale) {
+                    if (s.options[o].value === locale) {
                         s.options[o].selected = true;
                         break;
                     }
@@ -327,7 +337,7 @@ const drawer = (() => {
             s.onchange = () => config.changeFontSize(s.value);
             config.registerFontSizeChangedCallback((size) => {
                 for (let o in s.options)
-                    if (s.options[o].value == size) {
+                    if (s.options[o].value === size) {
                         s.options[o].selected = true;
                         break;
                     }
@@ -349,7 +359,9 @@ const drawer = (() => {
                 </span>
             </input>`;
             let input = l.children[0];
-            config.registerThemeChangedCallback((light) => input.checked = !light);
+            config.registerThemeChangedCallback((light) => {
+                input.checked = !light;
+            });
             input.onchange = () => config.changeTheme(!input.checked);
             div_theme.appendChild(l);
 
@@ -378,11 +390,12 @@ const drawer = (() => {
         }
 
         result.addDrawerContentByFrame(settingsFrame);
-    };
+    }
 
     // function bindings
     button.onclick = () => result.changeDrawerStatus();
-    mask.onclick = () => { };
+    mask.onclick = () => {
+    };
     document.onresize = () => result.updateDrawerCond();
 
     // debug uses

@@ -1,8 +1,8 @@
-"use-strict";
+"use strict";
 
-export { localizeHelper };
+export {localizeHelper};
 
-import { getJsonData } from "./json.js";
+import {getJsonData} from "./json.js";
 
 const localizeHelper = (() => {
     let result = {};
@@ -36,20 +36,30 @@ const localizeHelper = (() => {
     );
 
     // helper functions
-    result.registerTranslationImportedCallback = (onTranslationImported = () => { }) => {
+    result.registerTranslationImportedCallback = (onTranslationImported = () => {
+    }) => {
         translationImported.push(onTranslationImported);
     }
-    result.registerLocaleChangeCallback = (id, onLocaleChange = (str) => { }) => {
+    result.registerLocaleChangeCallback = (id, onLocaleChange = (str) => {
+        console.log(str)
+    }) => {
         localeChange[id] = onLocaleChange;
     };
-    result.registerLanguageListLoadedCallback = (onLanguageListLoaded = (languages) => { }) => {
+    result.registerLanguageListLoadedCallback = (onLanguageListLoaded = (languages) => {
+        console.log(languages)
+    }) => {
         languageListLoaded.push(onLanguageListLoaded);
     };
+    result.registerStringsLoadedCallback = (onStringsLoaded = (stringsLoaded) => {
+        console.log(stringsLoaded)
+    }) => {
+        stringsLoaded.push(onStringsLoaded);
+    }
     result.changeLocale = (selected) => {
         const DEF = "en-US";
         let s = DEF;
         for (let i in languages)
-            if (languages[i].id == selected) {
+            if (languages[i].id === selected) {
                 s = selected;
                 break;
             }
@@ -59,7 +69,7 @@ const localizeHelper = (() => {
             localeChange[id]((!translate[id][s]) ? translate[id][DEF] : translate[id][s]);
         }
     };
-    result.importTranslation = (path) =>
+    result.importTranslation = (path) => {
         getJsonData(path).then(
             (data) => {
                 for (let i in data)
@@ -70,7 +80,8 @@ const localizeHelper = (() => {
             }
         ).catch(
             (err) => alert(err)
-        );
+        )
+    };
 
     // debug uses
     // result.translate = translate;
