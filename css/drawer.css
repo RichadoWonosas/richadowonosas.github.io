@@ -207,103 +207,99 @@
 
 @keyframes top-expand {
     0% {
-        y: 30;
+        transform: translateY(0);
         scale: 1;
     }
 
-    49% {
+    50% {
         scale: 1;
     }
 
-    50%,
+    51%,
     100% {
-        y: 46;
+        transform: translateY(16px);
         scale: 0;
     }
 }
 
 @keyframes top-collapse {
-
     0%,
-    66% {
-        y: 46;
+    65% {
+        transform: translateY(16px);
         scale: 0;
     }
 
-    67% {
-        y: 46;
+    66% {
+        transform: translateY(16px);
         scale: 1;
     }
 
     100% {
-        y: 30;
+        transform: translateY(0);
     }
 }
 
 @keyframes mid-expand {
-    0% {}
-
-    49% {
+    0%,
+    50% {
         scale: 1;
     }
 
-    50%,
+    51%,
     100% {
         scale: 0;
     }
 }
 
 @keyframes mid-collapse {
-
     0%,
-    66% {
+    65% {
         scale: 0;
     }
 
-    67% {
+    66% {
         scale: 1;
     }
 
-    100% {}
+    100% {
+    }
 }
 
 @keyframes low-expand {
     0% {
-        y: 62;
+        transform: translateY(0);
         scale: 1;
     }
 
-    49% {
+    50% {
         scale: 1;
     }
 
-    50%,
+    51%,
     100% {
-        y: 46;
+        transform: translateY(-16px);
         scale: 0;
     }
 }
 
 @keyframes low-collapse {
-
     0%,
-    66% {
-        y: 46;
+    65% {
+        transform: translateY(-16px);
         scale: 0;
     }
 
-    67% {
-        y: 46;
+    66% {
+        transform: translateY(-16px);
         scale: 1;
     }
 
     100% {
-        y: 62;
+        transform: translateY(0);
     }
 }
 
 @keyframes xl-expand {
-
     0%,
     49% {
         scale: 0;
@@ -340,7 +336,6 @@
 }
 
 @keyframes xr-expand {
-
     0%,
     49% {
         scale: 0;
@@ -588,7 +583,7 @@ label.toggle .slider .inner_slider {
 
 }
 
-label.toggle input:checked+.slider {
+label.toggle input:checked + .slider {
     background-color: var(--slider-active-bgcolor);
 }
 
@@ -597,7 +592,7 @@ label.toggle:active .slider .inner_slider {
     top: 1pt;
 }
 
-label.toggle input:checked+.slider .inner_slider {
+label.toggle input:checked + .slider .inner_slider {
     transform: translateX(calc(var(--width) - var(--height)));
 }
 
@@ -617,12 +612,12 @@ label.toggle #dn_span .inner_slider {
     box-shadow: 1pt 1pt 2.5pt #00000066, inset 0.6pt 0.6pt 0 #ffffff99;
 }
 
-label.toggle #daynight:checked+#dn_span {
+label.toggle #daynight:checked + #dn_span {
     background-color: #330066;
     background-position: 0;
 }
 
-label.toggle #daynight:checked+#dn_span .inner_slider {
+label.toggle #daynight:checked + #dn_span .inner_slider {
     background-color: #dddddd;
     background-position: 0 96%;
 }
