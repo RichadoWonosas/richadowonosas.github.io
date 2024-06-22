@@ -34,7 +34,7 @@
 }
 
 .yoha {
-    font-family: 'RW Yohane Sans', 'Noto Sans CJK SC Light', 'Noto Sans SC Light', 'MiSans Light';
+    font-family: 'RW Yohane Sans', 'Noto Sans CJK SC Light', 'Noto Sans SC Light', 'MiSans Light', sans-serif;
 }
 
 #drawer {
@@ -456,7 +456,7 @@
 }
 
 #warp_main {
-    --bg-path: var(--icon-art);
+    --bg-path: var(--icon-article);
     --offset-x: -5pt;
 }
 

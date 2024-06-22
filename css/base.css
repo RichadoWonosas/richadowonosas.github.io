@@ -280,7 +280,7 @@ textarea.areas {
 
 #root_div h1 {
     font-size: calc(var(--font-size, 12pt) * 2);
-    font-family: "Noto Serif CJK SC", "Noto Serif SC", "思源宋体", "Times New Roman", "宋体";
+    font-family: "Noto Serif CJK SC", "Noto Serif SC", "思源宋体", "Times New Roman", "宋体", serif;
     font-weight: 900;
 }
 
@@ -323,4 +323,24 @@ textarea.areas {
 
 #root_div article h3 {
     font-size: var(--font-size, 12pt);
+}
+
+h1 {
+    font-family: "Noto Serif CJK SC", "思源宋体", "宋体", serif;
+    font-size: 2.5em;
+    font-weight: 900;
+    margin-top: 0em;
+    margin-bottom: 12pt;
+}
+
+h2 {
+    font-size: 1.5em;
+    text-align: start;
+    text-indent: 2em;
+}
+
+h3 {
+    font-size: 1.2em;
+    text-align: start;
+    text-indent: 2em;
 }
