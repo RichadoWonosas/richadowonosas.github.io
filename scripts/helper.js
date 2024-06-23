@@ -170,6 +170,7 @@ const helper = (() => {
     };
     result.local = {};
     result.local.get = (entry) => local[entry];
+    result.local.set = (entry, val) => local[entry] = val;
     result.local.def = (entry) => localDefault[entry];
     Object.freeze(result.local);
 
