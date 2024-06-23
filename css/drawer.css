@@ -33,7 +33,8 @@
     src: url('https://richadowonosas.github.io/fonts/RWYohaneSans.otf');
 }
 
-.yoha {
+.yoha,
+.yoha * {
     font-family: 'RW Yohane Sans', 'Noto Sans CJK SC Light', 'Noto Sans SC Light', 'MiSans Light', sans-serif;
 }
 
