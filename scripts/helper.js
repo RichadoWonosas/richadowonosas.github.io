@@ -168,6 +168,10 @@ const helper = (() => {
         local[id] = localDefault[id] = defaultValue;
         result.addEvent(id, onTrigger);
     };
+    result.local = {};
+    result.local.get = (entry) => local[entry];
+    result.local.def = (entry) => localDefault[entry];
+    Object.freeze(result.local);
 
     // create drawer
     {
