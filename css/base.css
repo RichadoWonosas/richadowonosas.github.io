@@ -149,6 +149,16 @@ body {
     margin: 0;
 }
 
+button.selected {
+    font-weight: 700;
+}
+
+button.selected:hover,
+button.selected:focus-visible,
+button.selected:active {
+    background-color: inherit;
+}
+
 div {
     border-radius: 5pt;
     box-shadow: 0 1pt 4pt #66666633;
@@ -253,6 +263,10 @@ textarea.areas {
     overflow: hidden;
 }
 
+#root_div * {
+    font-size: var(--font-size, 12pt);
+}
+
 #root_div p,
 #root_div h1,
 #root_div h2,
@@ -327,7 +341,7 @@ h1 {
     font-size: 2.5em;
     font-weight: 900;
     margin-top: 0;
-    margin-bottom: 1em;
+    margin-bottom: 12pt;
 }
 
 h2 {
