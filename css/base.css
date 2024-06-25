@@ -2,6 +2,7 @@
 
 body {
     background-color: var(--page-bgcolor);
+    --font-size: 12pt;
 }
 
 * {
