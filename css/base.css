@@ -10,8 +10,7 @@ body {
     scroll-behavior: smooth;
 }
 
-.light,
-.light * {
+.light {
     --scrollbar-bgcolor: #ddaaffcc;
     --page-bgcolor: #eeeeee;
     --page-content-color: #333333;
@@ -37,8 +36,7 @@ body {
     --slider-inner-slcolor: #dddddd;
 }
 
-.dark,
-.dark * {
+.dark {
     --scrollbar-bgcolor: #110022cc;
     --page-bgcolor: #222222;
     --page-content-color: #cccccc;
