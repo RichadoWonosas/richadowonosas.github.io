@@ -35,6 +35,7 @@ body {
     --slider-active-bgcolor: #cc99ff;
     --slider-inner-bgcolor: #ffffff;
     --slider-inner-slcolor: #dddddd;
+    --edge-color: #33006666;
 }
 
 .dark {
@@ -61,6 +62,7 @@ body {
     --slider-active-bgcolor: #330066;
     --slider-inner-bgcolor: #dddddd;
     --slider-inner-slcolor: #aaaaaa;
+    --edge-color: #ffffff66;
 }
 
 .small {
@@ -224,7 +226,7 @@ table {
 textarea {
     resize: none;
     background-color: var(--art-bgcolor);
-    border: 1pt solid #cccccc;
+    border: 1pt solid var(--edge-color);
     border-radius: 5pt;
     font-family: inherit;
     font-size: 1em;
