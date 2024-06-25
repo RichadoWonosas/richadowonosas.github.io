@@ -1,5 +1,4 @@
-.light,
-.light * {
+.light {
     --icon-theme: url('https://richadowonosas.github.io/img/icons/light/theme.svg');
     --icon-lang: url('https://richadowonosas.github.io/img/icons/light/lang.svg');
     --icon-size: url('https://richadowonosas.github.io/img/icons/light/size.svg');
@@ -13,8 +12,7 @@
     --icon-export: url("https://richadowonosas.github.io/img/icons/light/export.svg");
 }
 
-.dark,
-.dark * {
+.dark {
     --icon-theme: url('https://richadowonosas.github.io/img/icons/dark/theme.svg');
     --icon-lang: url('https://richadowonosas.github.io/img/icons/dark/lang.svg');
     --icon-size: url('https://richadowonosas.github.io/img/icons/dark/size.svg');
