@@ -1,8 +1,15 @@
 "use strict";
 
-import {getJsonData} from "./json.js";
+export {helper, getJsonData};
 
-export {helper};
+const getJsonData = (path) => {
+    return fetch(path).then(
+        (response) =>
+            response.status === 200 ?
+                response.json() :
+                {}
+    );
+};
 
 const helper = (() => {
     let result = {};

@@ -1,34 +1,36 @@
 .light {
-    --icon-theme: url('https://richadowonosas.github.io/img/icons/light/theme.svg');
-    --icon-lang: url('https://richadowonosas.github.io/img/icons/light/lang.svg');
-    --icon-size: url('https://richadowonosas.github.io/img/icons/light/size.svg');
-    --icon-content: url('https://richadowonosas.github.io/img/icons/light/content.svg');
-    --icon-brief: url('https://richadowonosas.github.io/img/icons/light/brief.svg');
-    --icon-article: url('https://richadowonosas.github.io/img/icons/light/article.svg');
-    --icon-expand: url('https://richadowonosas.github.io/img/icons/light/expand.svg');
-    --icon-goto: url('https://richadowonosas.github.io/img/icons/light/goto.svg');
-    --icon-download: url("https://richadowonosas.github.io/img/icons/light/download.svg");
-    --icon-upload: url("https://richadowonosas.github.io/img/icons/light/upload.svg");
-    --icon-export: url("https://richadowonosas.github.io/img/icons/light/export.svg");
+    --icon-theme: url('/img/icons/light/theme.svg');
+    --icon-lang: url('/img/icons/light/lang.svg');
+    --icon-size: url('/img/icons/light/size.svg');
+    --icon-content: url('/img/icons/light/content.svg');
+    --icon-brief: url('/img/icons/light/brief.svg');
+    --icon-article: url('/img/icons/light/article.svg');
+    --icon-expand: url('/img/icons/light/expand.svg');
+    --icon-goto: url('/img/icons/light/goto.svg');
+    --icon-download: url("/img/icons/light/download.svg");
+    --icon-upload: url("/img/icons/light/upload.svg");
+    --icon-export: url("/img/icons/light/export.svg");
+    --icon-yoha: url('/img/icons/light/yoha.svg');
 }
 
 .dark {
-    --icon-theme: url('https://richadowonosas.github.io/img/icons/dark/theme.svg');
-    --icon-lang: url('https://richadowonosas.github.io/img/icons/dark/lang.svg');
-    --icon-size: url('https://richadowonosas.github.io/img/icons/dark/size.svg');
-    --icon-content: url('https://richadowonosas.github.io/img/icons/dark/content.svg');
-    --icon-brief: url('https://richadowonosas.github.io/img/icons/dark/brief.svg');
-    --icon-article: url('https://richadowonosas.github.io/img/icons/dark/article.svg');
-    --icon-expand: url('https://richadowonosas.github.io/img/icons/dark/expand.svg');
-    --icon-goto: url('https://richadowonosas.github.io/img/icons/dark/goto.svg');
-    --icon-download: url("https://richadowonosas.github.io/img/icons/dark/download.svg");
-    --icon-upload: url("https://richadowonosas.github.io/img/icons/dark/upload.svg");
-    --icon-export: url("https://richadowonosas.github.io/img/icons/dark/export.svg");
+    --icon-theme: url('/img/icons/dark/theme.svg');
+    --icon-lang: url('/img/icons/dark/lang.svg');
+    --icon-size: url('/img/icons/dark/size.svg');
+    --icon-content: url('/img/icons/dark/content.svg');
+    --icon-brief: url('/img/icons/dark/brief.svg');
+    --icon-article: url('/img/icons/dark/article.svg');
+    --icon-expand: url('/img/icons/dark/expand.svg');
+    --icon-goto: url('/img/icons/dark/goto.svg');
+    --icon-download: url("/img/icons/dark/download.svg");
+    --icon-upload: url("/img/icons/dark/upload.svg");
+    --icon-export: url("/img/icons/dark/export.svg");
+    --icon-yoha: url('/img/icons/dark/yoha.svg');
 }
 
 @font-face {
     font-family: 'RW Yohane Sans';
-    src: url('https://richadowonosas.github.io/fonts/RWYohaneSans.otf');
+    src: url('/fonts/RWYohaneSans.otf');
 }
 
 .yoha,
@@ -439,19 +441,8 @@
     --bg-path: var(--icon-size);
 }
 
-#warp_contents {
-    --bg-path: var(--icon-content);
-    --offset-x: 0pt;
-}
-
-#warp_brief {
-    --bg-path: var(--icon-brief);
-    --offset-x: -2pt;
-}
-
-#warp_main {
-    --bg-path: var(--icon-article);
-    --offset-x: -5pt;
+#settings_yoha {
+    --bg-path: var(--icon-yoha);
 }
 
 #drawer #root_container .drawer_root .drawer_content .opt_text {
@@ -596,7 +587,7 @@ label.toggle input:checked + .slider .inner_slider {
 }
 
 label.toggle #dn_span {
-    background-image: url(https://richadowonosas.github.io/img/base/bg-slider.svg);
+    background-image: url(/img/base/bg-slider.svg);
     background-size: cover;
     background-color: #ff9999;
     background-position: calc(var(--height) - var(--width));
@@ -605,7 +596,7 @@ label.toggle #dn_span {
 
 label.toggle #dn_span .inner_slider {
     background-color: #ffcc66;
-    background-image: url(https://richadowonosas.github.io/img/base/moon-texture.svg);
+    background-image: url(/img/base/moon-texture.svg);
     background-size: cover;
     background-position: 0 0;
     box-shadow: 1pt 1pt 2.5pt #00000066, inset 0.6pt 0.6pt 0 #ffffff99;

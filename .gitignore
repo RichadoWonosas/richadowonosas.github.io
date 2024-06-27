@@ -1,2 +1,11 @@
-.vscode/
-.idea/
+*
+!.gitignore
+!index.html
+!sw.js
+!LICENSE
+!README.md
+!css/
+!fonts/
+!img/
+!resources/
+!scripts/
