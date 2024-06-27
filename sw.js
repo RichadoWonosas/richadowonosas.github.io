@@ -1,4 +1,4 @@
-const RW_SW_VERSION = "RW_SW_v0";
+const RW_SW_VERSION = "RW_SW_v2";
 
 const addResourcesToCache = async (resources) => {
     const cache = await caches.open(RW_SW_VERSION);
@@ -21,43 +21,34 @@ const deleteOldCaches = async () => {
     await Promise.all(cachesToDelete.map(deleteCache));
 }
 
-const cacheFirst = async (request) => {
+const cacheFirst = async ({request}) => {
     // fetch from cache
     const responseFromCache = await caches.match(request);
     if (responseFromCache)
         return responseFromCache;
+
     // try fetch from network
     try {
         const responseFromNetwork = await fetch(request);
-        await putInCache(request, responseFromNetwork.clone());
+        if (/^(\.{0,2}\/|https:\/\/)/.test(responseFromNetwork.url))
+            await putInCache(request, responseFromNetwork.clone());
         return responseFromNetwork;
     } catch (err) {
         // respond with network error
-        return new Response("Network Error", {
+        return new Response("Network error", {
             status: 408,
             headers: {"Content-Type": "text/plain"},
         });
     }
 };
 
-// Enable navigation preload
-const enableNavigationPreload = async () => {
-    if (self.registration.navigationPreload)
-        await self.registration.navigationPreload.enable();
-};
-
 self.addEventListener("activate", (ev) => {
     ev.waitUntil(deleteOldCaches());
-});
-
-self.addEventListener("activate", (ev) => {
-    ev.waitUntil(enableNavigationPreload());
 });
 
 self.addEventListener("fetch", (ev) => {
     ev.respondWith(cacheFirst({
         request: ev.request,
-        preloadResponsePromise: ev.preloadResponse,
     }));
 });
 
