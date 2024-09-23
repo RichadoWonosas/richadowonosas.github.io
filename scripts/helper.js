@@ -131,6 +131,7 @@ const helper = (() => {
         addGlobalConfigEntry("locale", "en-US", (listeners, ev) => {
             let locale = global.locale = (ev["locale"] === undefined) ? global.locale : ev["locale"];
             result.saveGlobalConfig();
+            document.documentElement["lang"] = locale;
             for (let listenerID in listeners) {
                 if (localize.entries[listenerID] === undefined)
                     continue;
